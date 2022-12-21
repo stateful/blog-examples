@@ -1,0 +1,39 @@
+{
+  "name": "@text-plugins/core",
+  "version": "1.0.0",
+  "author": "Stateful",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "libc/index.js",
+  "files": [
+    "libc/*.js",
+    "libc/*.d.ts"
+  ],
+  "scripts": {
+    "test": "jest --config=./jest.config.ts",
+    "tsc:version": "tsc --version",
+    "build": "tsc -b --pretty",
+    "dev": "tsc --watch --pretty",
+    "lint:check": "eslint . --ext .ts --color --ignore-path ../../.eslintignore",
+    "lint:fix": "eslint . --ext .ts --color --fix --ignore-path ../../.eslintignore"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^8.2.1",
+    "@types/node": "^16.9.2",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-security": "^1.4.0",
+    "jest": "^27.2.4",
+    "ts-jest": "^27.0.5",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@text-plugins/colors": "^1.0.0",
+    "@text-plugins/plugin-manager": "^1.0.0",
+    "@text-plugins/types": "^1.0.0",
+    "colors": "^1.4.0",
+    "inquirer": "^8.2.2"
+  }
+}

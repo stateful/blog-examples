@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+  <body>
+    <canvas id="pendulum" width="400" height="300"> </canvas>
+    <script type="module">
+      import { init, getNextPosition, move } from './build/release.js';     
+      const CANVAS_LOCATION_X = 150;
+      const ROD_LOCATION_X = 200;
+      const ROD_LOCATION_Y = 135;
+      const BALL_LOCATION_Y = 150;
+      const PENDULUM_VELOCITY = 0;
+      const SPEED = 50;
+      const AMPLITUDE = 20;
+
+      const canvas = document.getElementById('pendulum');
+      const context = canvas.getContext('2d');
+      const boundingRect = canvas.getBoundingClientRect();
+
+      // Compute the size of the viewport
+      const ratio = window.devicePixelRatio || 1;
+      const width = (boundingRect.width | 0) * ratio;
+      const height = (boundingRect.height | 0) * ratio;
+      canvas.width = width;
+      canvas.height = height;
+      context.scale(ratio, ratio);
+
+      const clearCanvas = (context, canvas) => {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      };
+      const drawBall = (context, x, y) => {
+        context.arc(x, y, 20, 0, 2 * Math.PI, false);
+
+        const startCircle = {
+          x,
+          y,
+          r: 2,
+        };
+
+        const endCircle = {
+          x,
+          y,
+          r: 18,
+        };
+
+        const circleGradient = context.createRadialGradient(
+          startCircle.x,
+          startCircle.y,
+          startCircle.r,
+          endCircle.x,
+          endCircle.y,
+          endCircle.r
+        );
+
+        // Start of the gradient color
+        circleGradient.addColorStop(0, '#fff');
+        // End of the gradient color
+        circleGradient.addColorStop(1, '#fa310a');
+
+        return circleGradient;
+      };
+      const drawRod = (context, x, y) => {
+        context.moveTo(CANVAS_LOCATION_X, 0);
+        context.lineTo(x, y);
+        context.lineWidth = 1;
+        context.setLineDash([1, 1]);
+        context.strokeStyle = 'grey';
+        context.stroke();
+      };
+
+
+      context.beginPath();
+      init(CANVAS_LOCATION_X, AMPLITUDE, width, height);
+      drawRod(context, ROD_LOCATION_X, ROD_LOCATION_Y);
+      context.beginPath();
+      const pendulumCircle = drawBall(context, ROD_LOCATION_X, BALL_LOCATION_Y);
+      context.fillStyle = pendulumCircle;
+      context.fill();
+      context.beginPath();
+
+      function drawPendulum() {
+        // Clear the canvas
+        clearCanvas(context, canvas);
+        context.beginPath();
+        // Call Wasm code to calculate the next position
+        move();
+        drawRod(context, getNextPosition(), ROD_LOCATION_Y);
+        context.beginPath();
+        const grd = drawBall(context, getNextPosition(), BALL_LOCATION_Y);
+        context.fillStyle = grd;
+        context.fill();
+      }
+      window.setInterval(drawPendulum, SPEED);
+    </script>
+  </body>
+</html>
+
+

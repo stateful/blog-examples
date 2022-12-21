@@ -1,0 +1,23 @@
+{
+  "name": "@text-plugins/colors",
+  "version": "1.0.0",
+  "author": "Stateful",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "libc/index.js",
+  "files": [
+    "libc/*.js",
+    "libc/*.d.ts"
+  ],
+  "scripts": {
+    "test": "jest --config=./jest.config.ts",
+    "tsc:version": "tsc --version",
+    "build": "tsc -b --pretty",
+    "dev": "tsc --watch --pretty",
+    "lint:check": "eslint . --ext .ts --color --ignore-path ../../.eslintignore",
+    "lint:fix": "eslint . --ext .ts --color --fix --ignore-path ../../.eslintignore"
+  },
+  "dependencies": {
+    "@text-plugins/types": "^1.0.0",
+    "colors": "^1.4.0"
+  }
+}
