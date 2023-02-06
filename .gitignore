@@ -69,3 +69,4 @@ typings/
 
 .fusebit-state
 business_data_output.csv
+!gmail-api-nodejs-app/.env

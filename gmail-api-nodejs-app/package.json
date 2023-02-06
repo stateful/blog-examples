@@ -1,0 +1,31 @@
+{
+  "name": "gmail-api-nodejs-app",
+  "version": "1.0.0",
+  "description": "Examples to the blog post 'How to Use the Gmail API in Node.js - A Step-by-Step Tutorial'",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/stateful/blog-examples.git"
+  },
+  "keywords": [
+    "gmail",
+    "stateful",
+    "blog"
+  ],
+  "author": "Christian Bromann <christian@stateful.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stateful/blog-examples/issues"
+  },
+  "homepage": "https://github.com/stateful/blog-examples#readme",
+  "dependencies": {
+    "axios": "^1.3.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "googleapis": "^110.0.0",
+    "nodemailer": "^6.9.1"
+  }
+}
