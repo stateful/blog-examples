@@ -26,7 +26,7 @@ npm install
 then, start the API server:
 
 ```sh { background=true }
-$ node app.js
+node app.js
 ```
 
 You can now access the API via:
@@ -42,18 +42,20 @@ In order to test the behavior of the example implementation, run the following q
 ### Test `getUser`
 
 ```sh
-curl http://localhost:8000/api/mail/user/sid.cd.varnma@gmail.com
+export USER_EMAIL="<YOUR_USER_EMAIL>"
+curl "http://localhost:8000/api/mail/user/$YOUR_USER_EMAIL"
 ```
 
 ### Test `getDrafts`
 
 ```sh
-curl http://localhost:8000/api/mail/drafts/sid.cd.varnma@gmail.com
+curl "http://localhost:8000/api/mail/drafts/$YOUR_USER_EMAIL"
 ```
 
 ### Test `readMail`
 
 ```sh
+export EMAIL_ID="<YOUR_EMAIL_ID>"
 curl http://localhost:8000/api/mail/read/17f63b4513fb51c0
 ```
 
