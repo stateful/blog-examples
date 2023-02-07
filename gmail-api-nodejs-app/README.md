@@ -4,7 +4,16 @@ These are the example files used by the blog post [*"How to Use the Gmail API in
 
 ## Gmail API Setup in Node.JS
 
-In order to use any Google API, there are some prerequisite steps we need to perform. Please follow the step by step instructions from the original [blog post](https://stateful.com/blog/gmail-api-node-tutorial). Make sure to update the `.env` file before you continue.
+In order to use any Google API, there are some prerequisite steps we need to perform. Please follow the step-by-step instructions from the original [blog post](https://stateful.com/blog/gmail-api-node-tutorial). Make sure to create a `.env` file as described in the post or run this with Runme and enter values dynamically before you continue:
+
+```sh
+export PORT=8000
+
+export CLIENT_ID=<your-client-id>
+export CLIENT_SECRET=<your-client-secret>
+export REDIRECT_URI=<your-redirect-uri>
+export REFRESH_TOKEN=<your-refresh-token>
+```
 
 ## Run Example
 
