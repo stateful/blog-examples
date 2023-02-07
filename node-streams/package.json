@@ -1,0 +1,24 @@
+{
+  "name": "node-streams",
+  "version": "0.0.1",
+  "description": "Example on blog post 'How to Process Large Files with Node.js'\"",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stateful/blog-examples.git"
+  },
+  "keywords": [
+    "stateful",
+    "runme",
+    "example"
+  ],
+  "author": "Christian Bromann <christian@stateful.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stateful/blog-examples/issues"
+  },
+  "homepage": "https://github.com/stateful/blog-examples#readme"
+}
