@@ -1,0 +1,19 @@
+<html>
+
+<head>
+  <script>
+    let webSocket = new WebSocket(location.origin.replace(/^http/, 'ws'));
+    let el;
+
+    webSocket.onmessage = (event) => {
+      el = document.getElementById('time');
+      el.innerHTML = 'Current time on server is: ' + event.data;
+    };
+  </script>
+</head>
+
+<body>
+  <p id="time"></p>
+</body>
+
+</html>
