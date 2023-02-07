@@ -43,13 +43,14 @@ In order to test the behavior of the example implementation, run the following q
 
 ```sh
 export USER_EMAIL="<YOUR_USER_EMAIL>"
-curl "http://localhost:8000/api/mail/user/$YOUR_USER_EMAIL"
+curl "http://localhost:8000/api/mail/user/$USER_EMAIL"
 ```
 
 ### Test `getDrafts`
 
 ```sh
-curl "http://localhost:8000/api/mail/drafts/$YOUR_USER_EMAIL"
+export USER_EMAIL="<YOUR_USER_EMAIL>"
+curl "http://localhost:8000/api/mail/drafts/$USER_EMAIL"
 ```
 
 ### Test `readMail`
