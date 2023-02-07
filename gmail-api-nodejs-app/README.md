@@ -9,10 +9,10 @@ In order to use any Google API, there are some prerequisite steps we need to per
 ```sh
 export PORT=8000
 
-export CLIENT_ID=<your-client-id>
-export CLIENT_SECRET=<your-client-secret>
-export REDIRECT_URI=<your-redirect-uri>
-export REFRESH_TOKEN=<your-refresh-token>
+export CLIENT_ID="<your-client-id>"
+export CLIENT_SECRET="<your-client-secret>"
+export REDIRECT_URI="<your-redirect-uri>"
+export REFRESH_TOKEN="<your-refresh-token>"
 ```
 
 ## Run Example
@@ -25,7 +25,7 @@ npm install
 
 then, start the API server:
 
-```sh
+```sh { background=true }
 $ node app.js
 ```
 
