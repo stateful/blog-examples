@@ -6,7 +6,7 @@ These are the example files used by the blog post [_"How to Process Large Files 
 
 You can download and unzip the statistics CSV file via:
 
-```sh
+```sh { interactive=false }
 curl https://www.stats.govt.nz/assets/Uploads/New-Zealand-business-demography-statistics/New-Zealand-business-demography-statistics-At-February-2021/Download-data/Geographic-units-by-industry-and-statistical-area-2000-2021-descending-order-CSV.zip -O -J -L
 unzip ./Geographic-units-by-industry-and-statistical-area-2000-2021-descending-order-CSV.zip
 mv ./Data7602DescendingYearOrder.csv ./business_data.csv
@@ -17,14 +17,14 @@ rm Geographic-units-by-industry-and-statistical-area-2000-2021-descending-order-
 
 Execute example files by executing this in your terminal:
 
-```sh
+```sh { interactive=false }
 $ node read.js
 ```
 
-```sh
+```sh { interactive=false }
 $ node readAndParse.js
 ```
 
-```sh
+```sh { interactive=false }
 $ node outputParsedData.js
 ```
