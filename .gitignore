@@ -68,4 +68,6 @@ typings/
 .idea/
 
 .fusebit-state
-business_data_output.csv
+*.csv
+*.zip
+*.xlsx
