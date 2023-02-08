@@ -2,6 +2,13 @@
 
 This project is an example project from the Stateful blog post on: [*Google Sheets API Tutorial: The Basics You Need to Get Going*](https://stateful.com/blog/google-sheets-api-tutorial). You can interactively run through the example using [Runme](https://runme.dev/).
 
+## Prerequisites
+
+To run through the code example, ensure you have:
+
+- set up a service account to authenticate with Google, a `keys.json` should exist within this directory
+- you have created a demo spreadsheet that you have shared with the service account email
+
 ## Install Dependencies
 
 Install all dependencies via:
