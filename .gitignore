@@ -72,4 +72,4 @@ typings/
 *.zip
 *.xlsx
 
-google-calendar-api-javascript/keys.json
+keys.json

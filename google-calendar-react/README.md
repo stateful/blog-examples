@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project is an example project from the Stateful blog post on: [_Using the Google Calendar API in React.js: An In-Depth Guide_](https://stateful.com/blog/google-calendar-react). You can interactively run through the example using [Runme](https://runme.dev/).
+This project is an example project from the Stateful blog post on: [*Using the Google Calendar API in React.js: An In-Depth Guide*](https://stateful.com/blog/google-calendar-react). You can interactively run through the example using [Runme](https://runme.dev/).
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ Runs the app in the development mode.
 npm start
 ```
 
-The page will reload when you make changes.\
+The page will reload when you make changes.  
 You may also see any lint errors in the console.
 
 ## Other Scripts
@@ -55,7 +55,7 @@ npm run build
 
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+The build is minified and the filenames include the hashes.  
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
