@@ -1,4 +1,4 @@
-# How to Process Large Files with Node.js
+# How to Use the Gmail API in Node.js - A Step-by-Step Tutorial
 
 These are the example files used by the blog post [*"How to Use the Gmail API in Node.js - A Step-by-Step Tutorial"*](https://stateful.com/blog/gmail-api-node-tutorial). Check it out for more details. To run the files you need to have [Node.js](https://nodejs.org/en/) installed.
 
