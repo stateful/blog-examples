@@ -71,3 +71,5 @@ typings/
 *.csv
 *.zip
 *.xlsx
+
+google-calendar-api-javascript/keys.json

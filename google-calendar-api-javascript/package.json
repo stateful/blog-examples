@@ -1,0 +1,30 @@
+{
+  "name": "google-calendar-api-javascript",
+  "version": "1.0.0",
+  "description": "How to Use the Google Calendar API With JavaScript",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/stateful/blog-examples.git"
+  },
+  "keywords": [
+    "stateful",
+    "google",
+    "calendar",
+    "nodejs"
+  ],
+  "author": "Christian Bromann <christian@stateful.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stateful/blog-examples/issues"
+  },
+  "homepage": "https://github.com/stateful/blog-examples#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "googleapis": "^110.0.0"
+  }
+}
