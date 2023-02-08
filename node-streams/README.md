@@ -15,16 +15,26 @@ rm Geographic-units-by-industry-and-statistical-area-2000-2021-descending-order-
 
 ## Examples
 
-Execute example files by executing this in your terminal:
+Execute example files by executing this in your terminal or via Runme.
+
+### Step 1: Reading the File
 
 ```sh { interactive=false }
 $ node read.js
 ```
 
+### Step 2: Parsing the File
+
 ```sh { interactive=false }
 $ node readAndParse.js
 ```
 
+### Step 3: Outputting the Parsed Data
+
 ```sh { interactive=false }
 $ node outputParsedData.js
 ```
+
+---
+
+If you experience any issues with the example or have questions on how to run it, please don't hesitate to [join us on Discord](https://discord.com/invite/BQm8zRCBUY)!

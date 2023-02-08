@@ -51,3 +51,7 @@ To run the `sockette` example, run:
 ```sh
 node sockette.js
 ```
+
+---
+
+If you experience any issues with the example or have questions on how to run it, please don't hesitate to [join us on Discord](https://discord.com/invite/BQm8zRCBUY)!

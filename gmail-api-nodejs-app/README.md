@@ -63,3 +63,7 @@ curl http://localhost:8000/api/mail/read/17f63b4513fb51c0
 ```sh
 curl http://localhost:8000/api/mail/send
 ```
+
+---
+
+If you experience any issues with the example or have questions on how to run it, please don't hesitate to [join us on Discord](https://discord.com/invite/BQm8zRCBUY)!
