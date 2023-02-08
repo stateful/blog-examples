@@ -1,10 +1,10 @@
 const generateConfig = (url, accessToken) => {
   return {
-    method: "get",
+    method: 'get',
     url: url,
     headers: {
       Authorization: `Bearer ${accessToken} `,
-      "Content-type": "application/json",
+      'Content-type': 'application/json',
     },
   };
 };

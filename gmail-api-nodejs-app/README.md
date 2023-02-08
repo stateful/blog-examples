@@ -8,7 +8,7 @@ In order to use any Google API, there are some prerequisite steps we need to per
 
 ```sh
 export PORT=8000
-
+export USER_EMAIL="<your-email>"
 export CLIENT_ID="<your-client-id>"
 export CLIENT_SECRET="<your-client-secret>"
 export REDIRECT_URI="<your-redirect-uri>"
@@ -42,14 +42,12 @@ In order to test the behavior of the example implementation, run the following q
 ### Test `getUser`
 
 ```sh
-export USER_EMAIL="<YOUR_USER_EMAIL>"
 curl "http://localhost:8000/api/mail/user/$USER_EMAIL"
 ```
 
 ### Test `getDrafts`
 
 ```sh
-export USER_EMAIL="<YOUR_USER_EMAIL>"
 curl "http://localhost:8000/api/mail/drafts/$USER_EMAIL"
 ```
 
