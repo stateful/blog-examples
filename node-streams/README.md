@@ -1,6 +1,6 @@
 # How to Process Large Files with Node.js
 
-These are the example files used by the blog post [_"How to Process Large Files with Node.js"_](https://stateful.com/blog/process-large-files-nodejs-streams). Check it out for more details. To run the files you need to have [Node.js](https://nodejs.org/en/) installed.
+These are the example files used by the blog post [*"How to Process Large Files with Node.js"*](https://stateful.com/blog/process-large-files-nodejs-streams). Check it out for more details. To run the files you need to have [Node.js](https://nodejs.org/en/), [curl](https://curl.se/) and [unzip](https://infozip.sourceforge.net/UnZip.html) installed.
 
 ## Prerequisites
 
