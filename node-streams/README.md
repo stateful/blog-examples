@@ -1,6 +1,8 @@
 # How to Process Large Files with Node.js
 
-These are the example files used by the blog post [*"How to Process Large Files with Node.js"*](https://stateful.com/blog/process-large-files-nodejs-streams). Check it out for more details. To run the files you need to have [Node.js](https://nodejs.org/en/), [curl](https://curl.se/) and [unzip](https://infozip.sourceforge.net/UnZip.html) installed.
+[![](https://badgen.net/badge/Run%20this%20/README/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=https://github.com/stateful/blog-examples.git&fileToOpen=node-streams/README.md)
+
+These are the example files used by the blog post [_"How to Process Large Files with Node.js"_](https://stateful.com/blog/process-large-files-nodejs-streams). Check it out for more details. To run the files you need to have [Node.js](https://nodejs.org/en/), [curl](https://curl.se/) and [unzip](https://infozip.sourceforge.net/UnZip.html) installed.
 
 ## Prerequisites
 
