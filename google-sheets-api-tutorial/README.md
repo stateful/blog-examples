@@ -1,6 +1,6 @@
 # Google Sheets API Tutorial: The Basics You Need to Get Going
 
-[![](https://badgen.net/badge/Run%20this%20/README/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=https://github.com/stateful/blog-examples.git&fileToOpen=node-streams/README.md)
+[![](https://badgen.net/badge/Run%20this%20/README/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=https://github.com/stateful/blog-examples.git&fileToOpen=google-sheets-api-tutorial/README.md)
 
 This project is an example project from the Stateful blog post on: [*Google Sheets API Tutorial: The Basics You Need to Get Going*](https://stateful.com/blog/google-sheets-api-tutorial). You can interactively run through the example using [Runme](https://runme.dev/).
 

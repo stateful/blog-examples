@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-[![](https://badgen.net/badge/Run%20this%20/README/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=https://github.com/stateful/blog-examples.git&fileToOpen=node-streams/README.md)
+[![](https://badgen.net/badge/Run%20this%20/README/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=https://github.com/stateful/blog-examples.git&fileToOpen=google-calendar-react/README.md)
 
 This project is an example project from the Stateful blog post on: [*Using the Google Calendar API in React.js: An In-Depth Guide*](https://stateful.com/blog/google-calendar-react). You can interactively run through the example using [Runme](https://runme.dev/).
 
