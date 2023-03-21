@@ -1,5 +1,7 @@
 # WebAssembly using AssemblyScript example
 
+[![](https://badgen.net/badge/Run%20this%20/README/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=https://github.com/stateful/blog-examples.git&fileToOpen=node-streams/README.md)
+
 Compile the AssemblyScript to Wasm
 
 ```bash

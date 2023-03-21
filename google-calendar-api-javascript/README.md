@@ -1,5 +1,7 @@
 # How to Use the Google Calendar API With JavaScript
 
+[![](https://badgen.net/badge/Run%20this%20/README/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=https://github.com/stateful/blog-examples.git&fileToOpen=node-streams/README.md)
+
 These are the example files used by the blog post [*"How to Use the Google Calendar API With JavaScript"*](https://stateful.com/blog/google-calendar-api-javascript). Check it out for more details. To run the files you need to have [Node.js](https://nodejs.org/en/) installed.
 
 ## Install Dependencies
