@@ -1,6 +1,6 @@
 # How to Use the Gmail API in Node.js - A Step-by-Step Tutorial
 
-[![](https://badgen.net/badge/Run%20this%20/README/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=https://github.com/stateful/blog-examples.git&fileToOpen=gmail-api-nodejs/README.md)
+[![](https://badgen.net/badge/Run%20this%20/README/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=https://github.com/stateful/blog-examples.git&fileToOpen=gmail-api-nodejs-app/README.md)
 
 These are the example files used by the blog post [*"How to Use the Gmail API in Node.js - A Step-by-Step Tutorial"*](https://stateful.com/blog/gmail-api-node-tutorial). Check it out for more details. To run the files you need to have [Node.js](https://nodejs.org/en/) installed.
 
