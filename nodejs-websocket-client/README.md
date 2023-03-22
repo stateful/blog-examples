@@ -1,5 +1,7 @@
 # Node.js WebSocket Client: 3 Ways to Implement One
 
+[![](https://badgen.net/badge/Run%20this%20/README/5B3ADF?icon=https://runme.dev/img/logo.svg)](https://runme.dev/api/runme?repository=https://github.com/stateful/blog-examples.git&fileToOpen=nodejs-websocket-client/README.md)
+
 These are the example files used by the blog post [*"Node.js WebSocket Client: 3 Ways to Implement One"*](https://stateful.com/blog/nodejs-websocket-client). Check it out for more details. To run the files you need to have [Node.js](https://nodejs.org/en/) installed.
 
 ## Install Dependencies
