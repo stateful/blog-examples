@@ -1,4 +1,6 @@
-# Mix and match: JavaScript + Bash + Ruby
+# Mix & Match Languagues
+
+In this case, JavaScript + Bash + Ruby.
 
 ```javascript { terminalRows=20 }
 (async function getVeggies() {
@@ -12,18 +14,20 @@
 
 ```
 
-Don't like spinach? 🤔
+### Don't like spinach? 🤔
 
 ```sh { terminalRows=10 }
 echo -n $__ | grep -v Spinach
 ```
 
+### No more Spinach 🥬
+
 ```ruby
 def chop_em(cart)
-    print cart.split(/[\r\n]+/)
+    print cart.split(/[\r\n]+/).sort()
 end
 
 chop_em(ENV["__"])
 ```
 
-Read the docs on [runme.dev](https://runme.dev/) to learn how to get most out of Runme notebooks! 
+Read the docs at [runme.dev](https://runme.dev/) to learn more about shebang and how to get most out of Runme notebooks!
