@@ -1,6 +1,6 @@
 # Mix & Match Languagues
 
-In this case, JavaScript + Bash + Ruby.
+In this case, JavaScript + Bash + Ruby. Fetching a list of veggies from a REST API.
 
 ```javascript { terminalRows=20 }
 (async function getVeggies() {
@@ -16,11 +16,15 @@ In this case, JavaScript + Bash + Ruby.
 
 ### Don't like spinach? 🤔
 
+The previous cell's output will be "piped" into `$__`.
+
 ```sh { terminalRows=10 }
 echo -n $__ | grep -v Spinach
 ```
 
 ### No more Spinach 🥬
+
+Similarly Ruby can use the `__` environment variable to access the previous cell's output.
 
 ```ruby
 def chop_em(cart)
