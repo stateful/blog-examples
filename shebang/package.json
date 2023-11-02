@@ -1,29 +1,17 @@
 {
-  "name": "veganipsum-api",
+  "name": "veggies",
   "version": "1.0.0",
-  "description": "This is a 100% animal-cruelty free API.",
+  "description": "This is a 100% animal-cruelty free API inspired by https://github.com/thomasfaller/vegan-ipsum-api",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently --kill-others \"nodemon back/api/api.js\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thomasfaller/vegan-ipsum-api.git"
+    "dev": "concurrently --kill-others \"nodemon backend/api/api.js\""
   },
   "keywords": [
-    "Node",
-    "Express",
-    "MongoDb",
-    "Pug",
-    "Api",
+    "API",
     "Vegan"
   ],
-  "author": "Thomas Faller",
+  "author": "Stateful",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/thomasfaller/vegan-ipsum-api.git/issues"
-  },
-  "homepage": "https://github.com/thomasfaller/vegan-ipsum-api.git#readme",
   "dependencies": {
     "dotenv": "^6.2.0",
     "express": "^4.16.4"
