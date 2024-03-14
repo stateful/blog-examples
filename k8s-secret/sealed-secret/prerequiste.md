@@ -7,13 +7,17 @@ For This guide we are using the linux OS or Mac OS ( with we are using homebrew)
 Have a running [Kubernetes Cluster](https://kind.sigs.k8s.io/docs/user/quick-start/):
 
 ```sh {"id":"01HRY17WFT15AG25Y5F1ZA25CN"}
+export version
+
 # For AMD64 / x86_64
-[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-amd64
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v$version/kind-linux-amd64
 ```
 
 ```sh {"id":"01HRY170V8MKE512368XGW5MB8"}
+export version
+
 # For ARM64
-[ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-arm64
+[ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v$version/kind-linux-arm64
 ```
 
 Make the kind binary executable
@@ -75,8 +79,10 @@ brew install kubectl
 [Kubeseal](https://archive.eksworkshop.com/beginner/200_secrets/installing-sealed-secrets/): Install the Sealed Secrets command tool.
 
 ```sh {"id":"01HRY0HW5FKNC8D4VFAM4N1MG2"}
-wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.18.0/kubeseal-0.18.0-linux-amd64.tar.gz
-tar xfz kubeseal-0.18.0-linux-amd64.tar.gz
+export version
+
+wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v$version/kubeseal-$version-linux-amd64.tar.gz
+tar xfz kubeseal-$version-linux-amd64.tar.gz
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 
 ```
@@ -84,7 +90,9 @@ sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 Installing the Custom Controller and CRD for SealedSecrets
 
 ```sh {"id":"01HRYBEM3ADHTS4WVHD65HRKEG"}
-wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.18.0/controller.yaml
+export version
+
+wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v$version/controller.yaml
 kubectl apply -f controller.yaml
 
 ```

@@ -7,13 +7,17 @@ For This guide we are using the linux OS
 Have a running [Kubernetes Cluster](https://kind.sigs.k8s.io/docs/user/quick-start/):
 
 ```sh {"id":"01HRY17WFT15AG25Y5F1ZA25CN"}
+export version
+
 # For AMD64 / x86_64
-[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-amd64
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v$version/kind-linux-amd64
 ```
 
 ```sh {"id":"01HRY170V8MKE512368XGW5MB8"}
+export version
+
 # For ARM64
-[ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.22.0/kind-linux-arm64
+[ $(uname -m) = aarch64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v$version/kind-linux-arm64
 ```
 
 Make the kind binary executable
@@ -57,7 +61,9 @@ rm kubectl.sha256
 Step 1: Download SOPS Binary
 
 ```sh {"id":"01HRY2T0NAT6SED45Q4P8E0MCZ"}
-curl -LO https://github.com/getsops/sops/releases/download/v3.8.1/sops-v3.8.1.linux.amd64
+export 
+
+curl -LO https://github.com/getsops/sops/releases/download/v$version/sops-v$version.linux.amd64
 
 ```
 
@@ -85,19 +91,19 @@ unzip awscliv2.zip
 sudo ./aws/install
 ```
 
-Configure AWS CLI 
+Configure AWS CLI
 
 ```sh {"id":"01HRY7FFX057R29R3S3CX7H1NM"}
 aws configure
 ```
 
- An AWS account with privileges to create an [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) and a [KMS Key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
+An AWS account with privileges to create an [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) and a [KMS Key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
 
 ```sh {"id":"01HRYGXF70DXYQQBKEV6GGGCQN"}
  aws iam create-user --user-name runme-test
 ```
 
-Replace `runme-test` with the `username` you want 
+Replace `runme-test` with the `username` you want
 
 ## Create a KMS Key
 
@@ -107,17 +113,21 @@ To create a KMS key with a specific name, you can use the `--description` and th
 aws kms create-key --description "runme-key"
 ```
 
-Create an alias 
+Create an alias
 
 ```sh {"id":"01HRY636ZDM0231C0HBH4QAYVA"}
+export key
+
 # This will create an alias "alias/MyAliasName" associated with the newly created key
-aws kms create-alias --alias-name alias/runme --target-key-id {key}
+aws kms create-alias --alias-name alias/runme --target-key-id $key
 ```
 
-If you have a specific policy you want to use to create a your kms key 
+If you have a specific policy you want to use to create a your kms key
 
 ```sh {"id":"01HRYHTYT9E3Z0PMGDNKZ7SJP1"}
-aws kms put-key-policy --key-id <key-id> --policy-name default --policy file://key-policy.json
+export keyid
+
+aws kms put-key-policy --key-id $keyid --policy-name default --policy file://key-policy.json
 ```
 
-`key-policy.json` is the file that contains your policy  
+`key-policy.json` is the file that contains your policy
