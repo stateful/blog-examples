@@ -1,3 +1,9 @@
+---
+runme:
+  id: 01HSDK6B83AW56WBX7ZZKSEBVF
+  version: v3
+---
+
 ## **Prerequiste**
 
 For This guide we are using the linux OS
@@ -67,11 +73,15 @@ curl -LO https://github.com/getsops/sops/releases/download/v$version/sops-v$vers
 
 ```
 
+```sh {"id":"01HSDK806KZEM2CCV9A1XNW8JA"}
+export $version
+```
+
 Step 2: Move the Binary to Your PATH
 
 ```sh {"id":"01HRY2TNA7V8FX7YYTHFNW8NCK"}
 # Move the binary to your PATH
-mv sops-v3.8.1.linux.amd64 /usr/local/bin/sops
+mv sops-v$version.linux.amd64 /usr/local/bin/sops
 ```
 
 Step 3: Make the Binary Executable
