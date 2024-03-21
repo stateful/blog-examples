@@ -64,6 +64,8 @@ Check the version you installed is up-to-date:
 kubectl version --client
 ```
 
+Remove checksum file
+
 ```sh {"id":"01HRY1ATYFF4AHKZB3W141N6CS"}
 rm kubectl.sha256
 ```
