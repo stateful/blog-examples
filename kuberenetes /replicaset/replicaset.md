@@ -20,6 +20,11 @@ brew install kind
 brew install kubectl
 ```
 
+[Docker](https://docs.docker.com/build/guide/): Install Docker 
+
+```sh {"id":"01HSV5DXZM5VVTT0C4T48YFX18"}
+brew install docker 
+```
 
 Here are some commonly used **`kubectl`** commands related to ReplicaSets in Kubernetes:
 
