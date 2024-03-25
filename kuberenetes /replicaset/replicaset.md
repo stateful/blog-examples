@@ -1,5 +1,26 @@
 # Replicaset
 
+### Prerequisites:
+
+[Brew](https://brew.sh/): Install package manager
+
+```sh {"id":"01HRY4D7CPBMBAR5ME8JMR98SD"}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+[Kubernetes Cluster](https://kind.sigs.k8s.io/docs/user/quick-start/): Ensure you have a running Kubernetes cluster. For this guide, we will be using kind for my Kubernetes cluster.
+
+```sh {"id":"01HRY3P663XP7CVE2ZTVYSGCPS"}
+brew install kind
+```
+
+[Kubectl](https://kubernetes.io/docs/tasks/tools/): Install the Kubernetes command-line tool on your machine.
+
+```sh {"id":"01HRY3MRX9NMBBZK0G49KSW0N5"}
+brew install kubectl
+```
+
+
 Here are some commonly used **`kubectl`** commands related to ReplicaSets in Kubernetes:
 
 1. **Apply a ReplicaSet manifest:**
