@@ -28,8 +28,8 @@ kubeseal < mysecret.yaml > mysealedsecret.yaml
 
 Or you can use the sealed-secrets-controller installed in your cluster to enecypt secret before deploying
 
-```sh {"id":"01HRPRSEZHB0X6CHZGSRQD80ZM","name":"Encrypt-Sealed-secrets-controller"}
-cat mysecret.yaml | kubeseal --controller-namespace kube-system --controller-name sealed-secrets-controller --format yaml > mysealedsecret.yaml 
+```sh {"id":"01HT03QVA0KFHHZJBKRZZWA7WV","name":"encrypt-controller "}
+cat mysecret.yaml | kubeseal --controller-namespace kube-system --controller-name sealed-secrets-controller --format yaml > mysealedsecret.yaml
 ```
 
 This will create a SealedSecret resource (`mysealedsecret.yaml`) containing the encrypted data.
@@ -38,6 +38,16 @@ This will create a SealedSecret resource (`mysealedsecret.yaml`) containing the 
 
 ```sh {"id":"01HRQ0NF7FTBQM6GTQH56FVZNX","name":"Update-secrets"}
 echo -n "my secret api key" | kubectl create secret generic xxx --dry-run=client --from-file=api_key=/dev/stdin -o json | kubeseal --controller-namespace=kube-system --controller-name=sealed-secrets-controller --format yaml --merge-into mysealedsecret.yaml
+```
+
+### Decrypt Your Secrets
+
+```sh {"id":"01HT237JGP5R27894EYAPMGCXV","name":"decrypt-sealedsecret-controller"}
+kubeseal --controller-name=sealed-secrets --controller-namespace=sealed-secrets < mysealedsecret.yaml --recovery-unseal --recovery-private-key sealed-secrets-key.yaml -o yaml
+```
+
+```sh {"id":"01HT24QMSX7WC4EZ8FGRYSQMX1","name":"decrypt-cluster "}
+kubectl get secret runme -o yaml > test.yaml
 ```
 
 ## Delete Sealed Secret
