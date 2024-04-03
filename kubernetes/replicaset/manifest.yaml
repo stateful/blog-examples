@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: example-replicaset
+  name: runme-replicaset
   labels:
-    app: example
+    app: runme
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: example
+      app: runme
   template:
     metadata:
       labels:
-        app: example
+        app: runme
     spec:
       containers:
-      - name: example-container
+      - name: runme-container
         image: nginx:latest
         ports:
         - containerPort: 80
