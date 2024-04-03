@@ -95,6 +95,10 @@ kubectl delete pod pod-name -n runme
 
 Events are records of various occurrence and state changes in your cluster, this will show you what happened to the pod; when it got deleted and when your replica set created a new pod.
 
+```bash {"id":"01HTJH1QSC98W9C818FJZ06EKE"}
+kubectl get events -n runme
+```
+
 5. **Get logs from a specific pod in a ReplicaSet:**
 
 ```bash {"id":"01HSTRX6N6FMZ844J4QTEM3HC3"}
