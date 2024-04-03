@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: frontend
+  name: example-replicaset
   labels:
-    app: guestbook
-    tier: frontend
+    app: example
 spec:
-  # modify replicas according to your case
   replicas: 3
   selector:
     matchLabels:
-      tier: frontend
+      app: example
   template:
     metadata:
       labels:
-        tier: frontend
+        app: example
     spec:
       containers:
-      - name: php-redis
-        image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5
+      - name: example-container
+        image: nginx:latest
+        ports:
+        - containerPort: 80
