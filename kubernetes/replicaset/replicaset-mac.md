@@ -11,7 +11,6 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install kind
 brew install kubectl
-
 ```
 
 Here are some commonly used **`kubectl`** commands related to ReplicaSets in Kubernetes:
@@ -34,16 +33,16 @@ kubectl get replicaset
 kubectl describe replicaset my-replicaset
 ```
 
-4. **Scale the number of replicas in a ReplicaSet:**
+4. **Scale up the number of replicas in a ReplicaSet:**
 
 ```bash {"id":"01HSTRX6N6GK4APV477PZVH21A"}
 kubectl scale replicaset my-replicaset --replicas=4
 ```
 
-5. **Update a ReplicaSet with a new manifest:**
+5. **Scale down the number of replicas in a ReplicaSet**
 
-```bash {"id":"01HSTRX6N6BTJCGC8ECJZCCJSR"}
-kubectl apply -f manifest.yaml
+```bash {"id":"01HTJCKYKFDMNYBZC5V7YV26E4"}
+kubectl scale replicaset my-replicaset --replicas=2
 ```
 
 6. **Delete a ReplicaSet:**
@@ -61,13 +60,39 @@ kubectl delete replicaset --all -n your-namespace
 9. **View ReplicaSet events:**
 
 ```bash {"id":"01HSTRX6N6ECNT420KA5QGBCJT"}
-kubectl get events --field-selector involvedObject.name=my-replicaset
+kubectl get events --field-selector involvedObject.name=my-replicaset -n runme
 ```
 
-10. **Get logs from a specific pod in a ReplicaSet:**
+## Manage Replicaset using a Deployment
+
+1. **Update your manifest file:**
+
+You can also scale up or down your replicaset by updating your deployment file to specific the amount of pods you want running.
+
+`replicas: 3`
+
+```bash {"id":"01HSTRX6N6BTJCGC8ECJZCCJSR"}
+kubectl apply -f nginx-deployment.yaml
+```
+
+This will update your deployment with the define replica set
+
+2. **Delete the pod**
+
+A replicaSet ensure that a specific number of identical pods are running at all times, if a pod gets deleted, the ReplicaSet automatically creates a replacement pod to maintain the desired replica count.
+
+```bash {"id":"01HTJE025MYG33CVG4AGSYX4JN"}
+kubectl delete pod pod-name -n runme
+```
+
+3. **View Events**
+
+Events are records of various occurrence and state changes in your cluster, this will show you what happened to the pod; when it got deleted and when your replica set created a new pod.
+
+4. **Get logs from a specific pod in a ReplicaSet:**
 
 ```bash {"id":"01HSTRX6N6FMZ844J4QTEM3HC3"}
-kubectl logs -f pod/my-replicaset-name
+kubectl logs -f pod/my-replicaset-name -n runme
 ```
 
 Remember to replace placeholders like **`your-replicaset-name`**, **`your-manifest-file.yaml`**, etc., with your actual ReplicaSet name, manifest file, or other relevant values.
