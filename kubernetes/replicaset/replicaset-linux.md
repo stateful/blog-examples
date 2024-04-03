@@ -100,7 +100,13 @@ kubectl get events --field-selector involvedObject.name=my-replicaset -n runme
 
 ## Manage Replicaset using a Deployment
 
-1. **Update your manifest file:**
+1. **Apply a Deployment manifest:**
+
+```bash {"id":"01HTJGQMJYDDRA1S9NBWCCAF85"}
+kubectl apply -f nginx-deployment.yaml
+```
+
+2. **Update your manifest file:**
 
 You can also scale up or down your replicaset by updating your deployment file to specific the amount of pods you want running.
 
@@ -112,7 +118,7 @@ kubectl apply -f nginx-deployment.yaml
 
 This will update your deployment with the define replica set
 
-2. **Delete the pod**
+3. **Delete the pod**
 
 A replicaSet ensure that a specific number of identical pods are running at all times, if a pod gets deleted, the ReplicaSet automatically creates a replacement pod to maintain the desired replica count.
 
@@ -120,11 +126,11 @@ A replicaSet ensure that a specific number of identical pods are running at all 
 kubectl delete pod pod-name -n runme
 ```
 
-3. **View Events**
+4. **View Events**
 
 Events are records of various occurrence and state changes in your cluster, this will show you what happened to the pod; when it got deleted and when your replica set created a new pod.
 
-4. **Get logs from a specific pod in a ReplicaSet:**
+5. **Get logs from a specific pod in a ReplicaSet:**
 
 ```bash {"id":"01HSTRX6N6FMZ844J4QTEM3HC3"}
 kubectl logs -f pod/my-replicaset-name -n runme
