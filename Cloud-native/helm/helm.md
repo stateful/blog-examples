@@ -1,4 +1,4 @@
-# Prerequiste
+## Prerequiste
 
 - Have a running Kubernetes Cluster
 
@@ -18,7 +18,7 @@ brew install docker
 brew install helm
 ```
 
-# Basic Commands
+## Basic Commands
 
 ```sh
 helm search hub wordpress
