@@ -6,7 +6,7 @@
 * [Kubectl](https://kubernetes.io/docs/tasks/tools/): the kubernetes command-line tool is installed on your machine.
 * [Kubeseal](https://archive.eksworkshop.com/beginner/200_secrets/installing-sealed-secrets/): Install the Sealed Secrets Controller
 
-```sh {"id":"01HRY7NR4YZQXE2M1FMT40PFXJ","name":"Prerequiste"}
+```sh {"name":"Prerequiste"}
 brew install kind
 brew install kubectl 
 brew install kubeseal
@@ -16,19 +16,19 @@ brew install kubeseal
 
 Create a Kubernetes Secret as you normally would, and then use kubeseal to encrypt it. For example:
 
-```sh {"id":"01HRPP7C7J2N6GM2N0B6YMXNWP","name":"Encrypt-generic-secret"}
+```sh {"name":"Encrypt-generic-secret"}
 kubectl create secret generic mysecret --from-literal=username=myuser --from-literal=password=mypassword --dry-run=client -o yaml | kubeseal > mysealedsecret.yaml
 ```
 
 Or you can encrypt manifest file containing `mysecret.yaml` your secret
 
-```sh {"id":"01HRPQ7C5Y054XKGYT71E40EGH","name":"Encrypt-secret-file"}
+```sh {"name":"Encrypt-secret-file"}
 kubeseal < mysecret.yaml > mysealedsecret.yaml
 ```
 
 Or you can use the sealed-secrets-controller installed in your cluster to enecypt secret before deploying
 
-```sh {"id":"01HT03QVA0KFHHZJBKRZZWA7WV","name":"encrypt-controller "}
+```sh {"name":"encrypt-controller "}
 cat mysecret.yaml | kubeseal --controller-namespace kube-system --controller-name sealed-secrets-controller --format yaml > mysealedsecret.yaml
 ```
 
@@ -36,17 +36,23 @@ This will create a SealedSecret resource (`mysealedsecret.yaml`) containing the 
 
 ## Adding a new value to a sealed secret
 
-```sh {"id":"01HRQ0NF7FTBQM6GTQH56FVZNX","name":"Update-secrets"}
-echo -n "my secret api key" | kubectl create secret generic xxx --dry-run=client --from-file=api_key=/dev/stdin -o json | kubeseal --controller-namespace=kube-system --controller-name=sealed-secrets-controller --format yaml --merge-into mysealedsecret.yaml
+Update your manifest file with the updated value
+
+```sh {"name":"update-secret"}
+kubeseal --controller-namespace=kube-system --controller-name=sealed-secrets-controller < new_secret.yaml > mysealedsecret.yaml
+```
+
+```sh {"name":"deploy-secret"}
+kubectl apply -f mysealedsecret.yaml
 ```
 
 ### Decrypt Your Secrets
 
-```sh {"id":"01HT237JGP5R27894EYAPMGCXV","name":"decrypt-sealedsecret-controller"}
+```sh {"name":"decrypt-sealedsecret-controller"}
 kubeseal --controller-name=sealed-secrets --controller-namespace=sealed-secrets < mysealedsecret.yaml --recovery-unseal --recovery-private-key sealed-secrets-key.yaml -o yaml
 ```
 
-```sh {"id":"01HT24QMSX7WC4EZ8FGRYSQMX1","name":"decrypt-cluster "}
+```sh {"name":"decrypt-cluster "}
 kubectl get secret runme -o yaml > test.yaml
 ```
 
@@ -54,13 +60,13 @@ kubectl get secret runme -o yaml > test.yaml
 
 To delete the secret, use the `kubectl` command to delete the resource
 
-```sh {"id":"01HRPV1PYZQ9NG133FHDP745SW","name":"delete-sealed-secrets"}
+```sh {"name":"delete-sealed-secrets"}
 kubectl delete -f mysealedsecret.yaml
 ```
 
 ## Deploy the Sealed Secret:
 
-```sh {"id":"01HRPP9K1N8RE9DWGMG4R8HHGV","name":"deploy-secrets"}
+```sh {"name":"deploy-secrets"}
 kubectl apply -f mysealedsecret.yaml
 ```
 
