@@ -6,7 +6,7 @@
 brew install kind 
 ```
 
-- Have Docker running 
+- Have Docker running
 
 ```sh
 brew install docker 
@@ -39,15 +39,15 @@ helm history happy-panda
 ## Helm Repo
 
 ```sh
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+```
+
+```sh
  helm repo list
 ```
 
 ```sh
 helm search repo
-```
-
-```sh
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 ```
 
 ```sh
@@ -71,7 +71,7 @@ helm uninstall happy-panda
 ## Helm Upgrade
 
 ```sh
-helm upgrade ingress-nginx ingress-nginx/ingress-nginx --set replicaCount=3
+helm upgrade ingress-nginx ingress-nginx/ingress-nginx --values values.yaml
 ```
 
 ```sh
@@ -92,6 +92,8 @@ helm rollback ingress-nginx 1
 helm status ingress-nginx
 ```
 
+## Helm Get 
+
 ```sh
 helm get manifest ingress-nginx
 ```
@@ -103,22 +105,6 @@ helm get notes ingress-nginx
 ## Helm Plugin
 
 ```sh
-helm plugin list 
-```
-
-```sh
-helm plugin install https://github.com/databus23/helm-diff
-```
-
-```sh
-helm diff --help
-```
-
-```sh
-helm plugin uninstall secrets
-```
-
-```sh
 helm plugin list
 ```
 
@@ -127,5 +113,13 @@ helm plugin install https://github.com/jkroepke/helm-secrets --version v4.6.0
 ```
 
 ```sh
- helm secrets encrypt secrets.yaml 
+helm diff upgrade ingress-nginx
+```
+
+```sh
+helm plugin install https://github.com/databus23/helm-diff
+```
+
+```sh
+kubectl apply -f sops-secrets.yaml
 ```

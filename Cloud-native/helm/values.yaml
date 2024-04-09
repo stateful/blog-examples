@@ -1,0 +1,20 @@
+controller:
+  replicaCount: 3
+  image:
+    repository: nginx/nginx-ingress
+    tag: "1.0.0"
+    pullPolicy: IfNotPresent
+  service:
+    enabled: true
+    type: LoadBalancer
+    ports:
+      http: 80
+      https: 443
+  ingressClass: nginx
+  # Other controller configuration options...
+defaultBackend:
+  image:
+    repository: nginx/nginx-ingress
+    tag: "1.0.0"
+    pullPolicy: IfNotPresent
+  # Other defaultBackend configuration options...
