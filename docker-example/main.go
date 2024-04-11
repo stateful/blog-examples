@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/gorilla/mux"
 )
@@ -23,6 +24,7 @@ func main() {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("[%s] GET / -\n", time.Now().Format(time.RFC3339))
 	// Read the Docker logo image file
 	img, err := os.ReadFile("docker-mark-blue.png")
 	if err != nil {
