@@ -36,5 +36,4 @@ Stop container
 ```sh {"excludeFromRunAll":"true","id":"01HV5J4EV5CAM278WDTNBHB0N4","interactive":"true","name":"stop"}
 echo "Stoping container ${CONTAINER_ID}"
 docker stop $CONTAINER_ID
-unset CONTAINER_ID
 ```
