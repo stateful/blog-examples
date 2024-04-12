@@ -1,6 +1,8 @@
 # Use the official Golang image
 FROM golang:latest
 
+ENV TZ="UTC"
+
 # Set the Current Working Directory inside the container
 WORKDIR /app
 
