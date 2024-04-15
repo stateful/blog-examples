@@ -33,7 +33,7 @@ helm repo update
 ```
 
 ```sh
-helm history happy-panda
+helm history ingress-nginx
 ```
 
 ## Helm Repo
@@ -64,8 +64,10 @@ helm install ingress-nginx ingress-nginx/ingress-nginx
 helm status ingress-nginx
 ```
 
+## Helm Uninstall 
+
 ```sh
-helm uninstall happy-panda
+helm uninstall ingress-nginx
 ```
 
 ## Helm Upgrade
@@ -92,7 +94,7 @@ helm rollback ingress-nginx 1
 helm status ingress-nginx
 ```
 
-## Helm Get 
+## Helm Get
 
 ```sh
 helm get manifest ingress-nginx
