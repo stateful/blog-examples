@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: runme-replicaset
+  name: my-replicaset
   labels:
     app: runme
 spec:
