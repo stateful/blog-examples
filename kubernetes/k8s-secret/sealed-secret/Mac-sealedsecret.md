@@ -49,7 +49,7 @@ kubectl apply -f mysealedsecret.yaml
 ### Decrypt Your Secrets
 
 ```sh {"name":"decrypt-sealedsecret-controller"}
-kubeseal --controller-name=sealed-secrets --controller-namespace=sealed-secrets < mysealedsecret.yaml --recovery-unseal --recovery-private-key sealed-secrets-key.yaml -o yaml
+kubeseal --controller-name=sealed-secrets-controller --controller-namespace=kube-system  < mysealedsecret.yaml > mysecrets.yaml
 ```
 
 ```sh {"name":"decrypt-cluster "}
