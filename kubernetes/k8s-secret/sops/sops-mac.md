@@ -11,12 +11,32 @@
 
 ```sh {"name":"Prerequiste"}
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+```sh
 brew install kind
+```
+
+```sh
 brew install kubectl
-brew install sops
+```
+
+```sh {"name":"awscli"}
 brew install awscli
+```
+
+```sh {"name":"aws-version"}
 aws --version
+```
+
+```sh {"name":"aws-configure"}
 aws configure 
+```
+
+### Installation of SOPS
+
+```sh {"name":"install-sops"}
+brew install sops
 ```
 
 ### Create a KMS Key
