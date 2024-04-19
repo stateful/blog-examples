@@ -1,5 +1,7 @@
 ## Node Exporter
 
+Install Prometheus
+
 ```sh {"promptEnv":"yes"}
 export version
 export platform
@@ -17,6 +19,8 @@ sudo mv node_exporter-${version}.${platform}-arm64/node_exporter /usr/local/bin/
 sudo nano /etc/systemd/system/node_exporter.service
 ```
 
+Setup node exporter as a service
+
 ```sh
 cat <<EOF > ${PWD}/node_exporter/node_exporter.service
 [Unit]
@@ -32,6 +36,8 @@ WantedBy=default.target
 EOF
 
 ```
+
+Run node exporter as a service
 
 ```sh
 sudo cp -rf ${PWD}/node_exporter/node_exporter.service /etc/systemd/system/
@@ -116,6 +122,12 @@ sudo systemctl status prometheus
 sudo systemctl restart prometheus
 ```
 
+Open the app
+
+```sh
+open http://localhost:9090
+```
+
 ## Grafana
 
 Install Grafana
@@ -127,4 +139,79 @@ sudo dpkg -i grafana-enterprise_9.4.7_amd64.deb
 sudo apt-get install grafana 
 systemctl enable --now grafana-server
 systemctl restart grafana-server 
+```
+
+Open the app
+
+```sh
+open http://localhost:3000
+```
+
+## Alert Manager
+
+Install alert manager 
+
+```sh
+curl -LO https://github.com/prometheus/alertmanager/releases/download/v0.27.0/alertmanager-0.27.0.linux-amd64.tar.gz
+
+# Extract the binary
+tar -xzf alertmanager-${version}.${platform}-amd64.tar.gz
+
+# Move the binary to a suitable location (e.g., /usr/local/bin)
+sudo mv alertmanager-${version}.${platform}-amd64/alertmanager /usr/local/bin/
+
+# Move the binary to a suitable location (e.g., /etc)
+cp alertmanager-<version>.${platform}-amd64/alertmanager.yml /etc/alertmanager/
+
+alertmanager --config.file=/etc/alertmanager/alertmanager.yml
+```
+
+Edit the `alertmanager.yml` file to define your alerting configurations, notification integrations, and routing rules.
+
+```sh
+nano /etc/alertmanager/alertmanager.yml
+```
+
+Setup alert manager as a service
+
+```sh
+cat <<EOF > ${PWD}/alertmanager/alertmanager.service
+[Unit]
+Description=Alertmanager
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=alertmanager
+Group=alertmanager
+Type=simple
+ExecStart=/usr/local/bin/alertmanager --config.file=/etc/alertmanager/alertmanager.yml
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+Run alert manager as a service
+
+```sh
+sudo cp -rf ${PWD}/alertmanager/alertmanager.service /etc/systemd/system/
+
+sudo systemctl daemon-reload
+
+sudo systemctl start alertmanager
+echo "alertmanager has started."
+
+sudo systemctl enable alertmanager
+echo "alertmanager enable"
+
+sudo systemctl status alertmanager
+
+sudo systemctl restart alertmanager
+```
+
+Open the app
+
+```sh
+open http://localhost:9093
 ```
