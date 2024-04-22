@@ -36,6 +36,8 @@ run - start a container
 docker run nginx
 ```
 
+run - using a environment variable 
+
 ```sh {"background":"true"}
 export CONTAINER_ID=$(docker run -d -p 80:5000 nginx)
 echo "Starting container ${CONTAINER_ID}"
@@ -46,6 +48,8 @@ open the app
 ```sh
 open http://localhost:8000
 ```
+
+docker sleep
 
 ```sh
 docker run $CONTAINER_ID sleep 5
