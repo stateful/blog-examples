@@ -14,12 +14,18 @@ brew install docker
 
 ## Basic Commands
 
-Pull - download an image
+## Docker Pull - download an image
 
 pull image from docker hub registry
 
 ```sh
 docker pull nginx
+```
+
+## docker build
+
+```sh {"cwd":"/Users/macbookpro/Desktop/blog-examples/docker-example"}
+docker build -t my-test-app .
 ```
 
 ## Docker Container
@@ -30,8 +36,19 @@ run - start a container
 docker run nginx
 ```
 
+```sh {"background":"true"}
+export CONTAINER_ID=$(docker run -d -p 80:5000 nginx)
+echo "Starting container ${CONTAINER_ID}"
+```
+
+open the app
+
 ```sh
-docker run nginx sleep 5
+open http://localhost:8000
+```
+
+```sh
+docker run $CONTAINER_ID sleep 5
 ```
 
 ps - list containers
@@ -51,13 +68,13 @@ docker ps
 ```
 
 ```sh
-docker stop beautiful_driscoll
+docker stop $CONTAINER_ID
 ```
 
 Remove a container
 
 ```sh
-docker rm beautiful_driscoll
+docker rm $CONTAINER_ID
 ```
 
 ```sh
@@ -78,14 +95,19 @@ remove images
 docker rmi nginx 
 ```
 
-Exec - execute a command
+## Docker Exec - execute a command
 
 ```sh
 docker ps -a
 ```
 
 ```sh
-docker exec composetest-redis-1 cat /etc/hosts
+export CONTAINER_ID_TEST=$(docker ps --filter "ancestor=nginx" --format "{{.ID}}")
+echo "here is your container id ${CONTAINER_ID_TEST}"
+```
+
+```sh
+docker exec -it $CONTAINER_ID_TEST bash
 ```
 
 ### Run - attach and detach
@@ -105,11 +127,11 @@ docker attach 8fb9c
 Container logs
 
 ```sh
-docker inspect composetest-redis-1
+docker inspect $CONTAINER_ID
 ```
 
 ```sh
-docker logs composetest-redis-1
+docker logs $CONTAINER_ID
 ```
 
 ## Docker run
@@ -117,7 +139,7 @@ docker logs composetest-redis-1
 ### run - tag
 
 ```sh
-docker run redis:4.0
+docker run nginx:4.0
 ```
 
 ### run - stdin
@@ -137,7 +159,7 @@ docker run -it nginx
 ### Run - Volume mapping
 
 ```sh
-docker run -d -p 80:80 -v /Users/macbookpro/Desktop/composetest/nginx.conf:/etc/nginx/nginx.conf:ro nginx
+docker run -d -p 8010:8010 -v /Users/macbookpro/Desktop/composetest/nginx.conf:/etc/nginx/nginx.conf:ro nginx
 
 ```
 
@@ -148,15 +170,19 @@ docker run nginx
 ```
 
 ```sh
-docker run -p 80:5000 nginx
+docker run -p 8080:9010 nginx
 ```
 
 ### Docker compose up
 
-```sh
+```sh {"background":"true"}
 docker compose up
 ```
 
 ```sh
+open http://127.0.0.1:8000/
+```
+
+```sh {"background":"true"}
 docker compose down
 ```
