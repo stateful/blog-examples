@@ -1,6 +1,6 @@
 ## Node Exporter
 
-Install Prometheus
+### Install Node Exporter
 
 ```sh {"promptEnv":"yes"}
 export version
@@ -19,7 +19,7 @@ sudo mv node_exporter-${version}.${platform}-arm64/node_exporter /usr/local/bin/
 sudo nano /etc/systemd/system/node_exporter.service
 ```
 
-Setup node exporter as a service
+### Setup node exporter as a service
 
 ```sh
 cat <<EOF > ${PWD}/node_exporter/node_exporter.service
@@ -37,7 +37,7 @@ EOF
 
 ```
 
-Run node exporter as a service
+### Run node exporter as a service
 
 ```sh
 sudo cp -rf ${PWD}/node_exporter/node_exporter.service /etc/systemd/system/
@@ -58,7 +58,7 @@ sudo systemctl restart node_exporter
 
 ## Prometheus
 
-Install Prometheus
+### Install Prometheus
 
 ```sh {"promptEnv":"yes"}
 export version
@@ -72,7 +72,7 @@ cp -r prometheus-${version}.linux-amd64/prometheus ${PWD}/prometheus
 cp -r prometheus-${version}.linux-amd64/promtool ${PWD}/prometheus
 ```
 
-Setup your prometheus configuration
+## Setup your prometheus configuration
 
 ```sh
 cat <<EOF > ${PWD}/prometheus/prometheus.yml
@@ -88,7 +88,7 @@ scrape_configs:
 EOF
 ```
 
-Setup prometheus as a service
+### Setup prometheus as a service
 
 ```sh
 cat <<EOF > ${PWD}/prometheus/prometheus.service
@@ -104,7 +104,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-Run Prometheus as a service
+### Run Prometheus as a service
 
 ```sh
 sudo cp -rf ${PWD}/prometheus/prometheus.service /etc/systemd/system/
@@ -122,7 +122,7 @@ sudo systemctl status prometheus
 sudo systemctl restart prometheus
 ```
 
-Open the app
+### Open the app
 
 ```sh
 open http://localhost:9090
@@ -130,7 +130,7 @@ open http://localhost:9090
 
 ## Grafana
 
-Install Grafana
+### Install Grafana
 
 ```sh
 sudo apt-get install -y adduser libfontconfig1   
@@ -141,7 +141,7 @@ systemctl enable --now grafana-server
 systemctl restart grafana-server 
 ```
 
-Open the app
+### Open the app
 
 ```sh
 open http://localhost:3000
@@ -149,7 +149,7 @@ open http://localhost:3000
 
 ## Alert Manager
 
-Install alert manager 
+### Install alert manager
 
 ```sh
 curl -LO https://github.com/prometheus/alertmanager/releases/download/v0.27.0/alertmanager-0.27.0.linux-amd64.tar.gz
@@ -172,7 +172,7 @@ Edit the `alertmanager.yml` file to define your alerting configurations, notific
 nano /etc/alertmanager/alertmanager.yml
 ```
 
-Setup alert manager as a service
+### Setup alert manager as a service
 
 ```sh
 cat <<EOF > ${PWD}/alertmanager/alertmanager.service
@@ -192,7 +192,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-Run alert manager as a service
+### Run alert manager as a service
 
 ```sh
 sudo cp -rf ${PWD}/alertmanager/alertmanager.service /etc/systemd/system/
@@ -210,7 +210,7 @@ sudo systemctl status alertmanager
 sudo systemctl restart alertmanager
 ```
 
-Open the app
+### Open the app
 
 ```sh
 open http://localhost:9093
