@@ -36,7 +36,7 @@ run - start a container
 docker run nginx
 ```
 
-run - using a environment variable 
+run - using a environment variable
 
 ```sh {"background":"true"}
 export CONTAINER_ID=$(docker run -d -p 80:5000 nginx)
@@ -163,7 +163,7 @@ docker run -it nginx
 ### Run - Volume mapping
 
 ```sh
-docker run -d -p 8010:8010 -v /Users/macbookpro/Desktop/composetest/nginx.conf:/etc/nginx/nginx.conf:ro nginx
+docker run -d -p 8010:8010 -v ${PWD}/nginx.conf:/etc/nginx/nginx.conf:ro nginx
 
 ```
 
