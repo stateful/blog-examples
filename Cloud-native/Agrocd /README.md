@@ -226,14 +226,3 @@ git push
 ```
 
 # Cleanup
-
-Remove application and application project.
-
-```sh
-rm -f argocd-apps/sample-app.yaml
-rm -f argocd-appprojects/sample-project.yaml
-git rm argocd-apps/sample-app.yaml
-git rm argocd-appprojects/sample-project.yaml
-git commit -m "Remove app and project."
-git push
-```
