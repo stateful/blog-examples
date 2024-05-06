@@ -1,15 +1,9 @@
-## ArgoCD configuration
-## Ref: https://github.com/argoproj/argo-cd
-##
-## Server
 server:
-  ## ArgoCD config
-  ## reference https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
   configEnabled: true
   config:
     repositories: |
       - type: git
-        url: ddd
+        url: https://github.com/stateful/blog-examples.git
       - name: argo-helm
         type: helm
         url: https://argoproj.github.io/argo-helm
@@ -27,7 +21,7 @@ server:
           - values.yaml
           - ../values-override.yaml
         path: argocd-install/argo-cd
-        repoURL: ddd
+        repoURL: https://github.com/stateful/blog-examples.git
         targetRevision: HEAD
       syncPolicy:
         syncOptions:
@@ -40,7 +34,7 @@ server:
       project: argocd
       source:
         path: argocd-apps
-        repoURL: ddd
+        repoURL: https://github.com/stateful/blog-examples.git
         targetRevision: HEAD
         directory:
           recurse: true
@@ -57,7 +51,7 @@ server:
       project: argocd
       source:
         path: argocd-appprojects
-        repoURL: dddd
+        repoURL: https://github.com/stateful/blog-examples.git
         targetRevision: HEAD
         directory:
           recurse: true

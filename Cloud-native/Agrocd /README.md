@@ -44,7 +44,7 @@ server:
   config:
     repositories: |
       - type: git
-        url: dddd
+        url: https://github.com/stateful/blog-examples.git
       - name: argo-helm
         type: helm
         url: https://argoproj.github.io/argo-helm
@@ -62,7 +62,7 @@ server:
           - values.yaml
           - ../values-override.yaml
         path: argocd-install/argo-cd
-        repoURL: ddd
+        repoURL: https://github.com/stateful/blog-examples.git
         targetRevision: HEAD
       syncPolicy:
         syncOptions:
@@ -75,7 +75,7 @@ server:
       project: argocd
       source:
         path: argocd-apps
-        repoURL: dddd
+        repoURL: https://github.com/stateful/blog-examples.git
         targetRevision: HEAD
         directory:
           recurse: true
@@ -92,7 +92,7 @@ server:
       project: argocd
       source:
         path: argocd-appprojects
-        repoURL: dddd
+        repoURL: https://github.com/stateful/blog-examples.git
         targetRevision: HEAD
         directory:
           recurse: true
@@ -124,8 +124,9 @@ EOF
 
 Install Argo CD to *argocd* namespace using argo-cd helm chart overriding default values with *values-override.yaml* file. If argocd namespace does not exist, use *--create-namespace* parameter to create it.
 
-```sh
-helm install argocd ./argocd-install/argo-cd \
+```sh {"cwd":"/Users/macbookpro/Desktop/blog-examples/Cloud-native/Agrocd/argocd-install/"}
+cd argocd-install/
+helm install argocd ./argo-cd \
     --namespace=argocd \
     --create-namespace \
     -f values-override.yaml
@@ -205,7 +206,7 @@ spec:
   project: sample-project
   source:
     path: sample-app/
-    repoURL: edd
+    repoURL: https://github.com/stateful/blog-examples.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
