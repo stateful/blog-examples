@@ -1,3 +1,12 @@
+---
+runme:
+  document:
+    relativePath: README.md
+  session:
+    id: 01HX6KQRZXW515B0NRYWB7E0H9
+    updated: 2024-05-06 13:49:14+01:00
+---
+
 # Self Managed Argo CD - App of Everything
 
 # Create Local Kubernetes Cluster
@@ -44,16 +53,16 @@ server:
   config:
     repositories: |
       - type: git
-        url: https://github.com/stateful/blog-examples.git
+        url: ht*****************************************it
       - name: argo-helm
         type: helm
-        url: https://argoproj.github.io/argo-helm
+        url: ht********************************lm
   additionalApplications: 
     - name: argocd
       namespace: argocd
       destination:
         namespace: argocd
-        server: https://kubernetes.default.svc
+        server: ht**************************vc
       project: argocd
       source:
         helm:
@@ -62,7 +71,7 @@ server:
           - values.yaml
           - ../values-override.yaml
         path: argocd-install/argo-cd
-        repoURL: https://github.com/stateful/blog-examples.git
+        repoURL: ht*****************************************it
         targetRevision: HEAD
       syncPolicy:
         syncOptions:
@@ -71,11 +80,11 @@ server:
       namespace: argocd
       destination:
         namespace: argocd
-        server: https://kubernetes.default.svc
+        server: ht**************************vc
       project: argocd
       source:
         path: argocd-apps
-        repoURL: https://github.com/stateful/blog-examples.git
+        repoURL: ht*****************************************it
         targetRevision: HEAD
         directory:
           recurse: true
@@ -88,11 +97,11 @@ server:
       namespace: argocd
       destination:
         namespace: argocd
-        server: https://kubernetes.default.svc
+        server: ht**************************vc
       project: argocd
       source:
         path: argocd-appprojects
-        repoURL: https://github.com/stateful/blog-examples.git
+        repoURL: ht*****************************************it
         targetRevision: HEAD
         directory:
           recurse: true
@@ -111,7 +120,7 @@ server:
     - '*'
     destinations:
     - namespace: argocd
-      server: https://kubernetes.default.svc
+      server: ht**************************vc
     clusterResourceWhitelist:
     - group: '*'
       kind: '*'
@@ -136,25 +145,36 @@ Wait until all pods are running.
 
 ```sh
 kubectl -n argocd get pods
+
+# Ran on 2024-05-06 13:37:27+01:00 for 932ms exited with 0
+NAME                                             READY   STATUS    RESTARTS      AGE
+ar**************************r-57************f7   1/1     Running   1 (14m ago)   6d2h
+ar*************************9-hxgs8               1/1     Running   1 (14m ago)   6d2h
+ar*************************5t                    1/1     Running   1 (14m ago)   6d2h
+ar*************************5-xngg5               1/1     Running   1 (14m ago)   6d2h
+ar**************************lt                   1/1     Running   1 (14m ago)   6d2h
 ```
 
 Get initial admin password.
 
 ```sh
 kubectl -n argocd get secrets argocd-initial-admin-secret \
-    -o jsonpath='{.data.password}' | base64 -d
+    -o jsonpath='{.data.password}' | ba**64 -d
+
+# Ran on 2024-05-06 13:37:59+01:00 for 656ms exited with 0
+rFffqHiGZpCbPSyQ
 ```
 
-Forward argocd-server service port 80 to localhost:8080 using kubectl.
+Forward argocd-server service port 80 to lo*****st:8080 using kubectl.
 
 ```sh
 kubectl -n argocd port-forward service/argocd-server 8080:80
 ```
 
-Browse http://localhost:8080 and login with initial admin password.
+Browse ht*****************80 and login with initial admin password.
 
 ```sh
-open https://localhost:8080
+open ht******************80
 ```
 
 # Demo With Sample Application
@@ -163,7 +183,7 @@ Create an application project definition file called *sample-project*.
 
 ```sh
 cat << EOF > argocd-appprojects/sample-project.yaml
-apiVersion: argoproj.io/v1alpha1
+apiVersion: ar*******io/v1****a1
 kind: AppProject
 metadata:
   name: sample-projects
@@ -174,12 +194,14 @@ spec:
     kind: '*'
   destinations:
   - namespace: sample-app
-    server: https://kubernetes.default.svc
+    server: ht**************************vc
   orphanedResources:
     warn: false
   sourceRepos:
   - '*'
 EOF
+
+# Ran on 2024-05-06 13:47:53+01:00 for 581ms exited with 0
 ```
 
 Push changes to your repository.
@@ -194,7 +216,7 @@ Create a sample applicaiton definition yaml file called *sample-app* under argoc
 
 ```sh
 cat << EOF >> argocd-apps/sample-app.yaml
-apiVersion: argoproj.io/v1alpha1
+apiVersion: ar*******io/v1****a1
 kind: Application
 metadata:
   name: sample-app
@@ -202,11 +224,11 @@ metadata:
 spec:
   destination:
     namespace: sample-app
-    server: https://kubernetes.default.svc
+    server: ht**************************vc
   project: sample-project
   source:
     path: sample-app/
-    repoURL: https://github.com/stateful/blog-examples.git
+    repoURL: ht*****************************************it
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
