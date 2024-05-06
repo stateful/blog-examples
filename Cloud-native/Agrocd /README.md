@@ -147,7 +147,7 @@ kubectl -n argocd get secrets argocd-initial-admin-secret \
 
 Forward argocd-server service port 80 to localhost:8080 using kubectl.
 
-```sh
+```sh {"background":"true"}
 kubectl -n argocd port-forward service/argocd-server 8080:80
 ```
 
@@ -190,7 +190,7 @@ git commit -m "Create sample-project"
 git push
 ```
 
-Create a sample applicaiton definition yaml file called *sample-app* under argocd-apps.
+Create a sample application definition yaml file called *sample-app* under argocd-apps.
 
 ```sh
 cat << EOF >> argocd-apps/sample-app.yaml
@@ -220,14 +220,14 @@ EOF
 Push changes to your repository.
 
 ```sh
-git add .
+git add argocd-appprojects/sample-project.yaml
 git commit -m "Create application"
 git push
 ```
 
 # Cleanup
 
-Remove application and applicaiton project.
+Remove application and application project.
 
 ```sh
 rm -f argocd-apps/sample-app.yaml

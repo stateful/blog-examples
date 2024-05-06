@@ -4,7 +4,7 @@ runme:
     relativePath: README.md
   session:
     id: 01HX6KQRZXW515B0NRYWB7E0H9
-    updated: 2024-05-06 13:50:01+01:00
+    updated: 2024-05-06 14:34:01+01:00
 ---
 
 # Self Managed Argo CD - App of Everything
@@ -127,6 +127,8 @@ server:
     orphanedResources:
       warn: false
 EOF
+
+# Ran on 2024-05-06 14:27:08+01:00 for 602ms exited with 0
 ```
 
 # Install Argo CD Using Helm
@@ -139,6 +141,33 @@ helm install argocd ./argo-cd \
     --namespace=argocd \
     --create-namespace \
     -f values-override.yaml
+
+# Ran on 2024-05-06 14:27:33+01:00 for 3.84s exited with 0
+ma**************go:192: info: skipping unknown hook: "crd-install"
+ma**************go:192: info: skipping unknown hook: "crd-install"
+NAME: argocd
+LAST DEPLOYED: Mon May  6 14:27:35 2024
+NAMESPACE: argocd
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+In order to access the server UI you have the following options:
+
+1. kubectl port-forward service/argocd-server -n argocd 8080:443
+
+    and then open the browser on ht*****************80 and accept the certificate
+
+2. enable ingress in the values file `server.ingress.enabled` and either
+      - Add the annotation for ssl passthrough: ht****************************************************************************************************gh
+      - Add the `--insecure` flag to `server.extraArgs` in the values file and terminate SSL at your ingress: ht***********************************************************************************************************************ts
+
+
+After reaching the UI the first time you can login with username: admin and the password **** be the
+name of the server pod. You can get the pod name by running:
+
+kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-server -o name | cut -d'/' -f 2
+
 ```
 
 Wait until all pods are running.
@@ -146,13 +175,13 @@ Wait until all pods are running.
 ```sh
 kubectl -n argocd get pods
 
-# Ran on 2024-05-06 13:37:27+01:00 for 932ms exited with 0
-NAME                                             READY   STATUS    RESTARTS      AGE
-ar**************************r-57************f7   1/1     Running   1 (14m ago)   6d2h
-ar*************************9-hxgs8               1/1     Running   1 (14m ago)   6d2h
-ar*************************5t                    1/1     Running   1 (14m ago)   6d2h
-ar*************************5-xngg5               1/1     Running   1 (14m ago)   6d2h
-ar**************************lt                   1/1     Running   1 (14m ago)   6d2h
+# Ran on 2024-05-06 14:34:00+01:00 for 374ms exited with 0
+NAME                                             READY   STATUS              RESTARTS   AGE
+ar**************************r-57************mt   0/1     ContainerCreating   0          6m24s
+ar*************************9-zqxtg               0/1     Init:0/1            0          6m24s
+ar*************************g8                    1/1     Running             0          6m24s
+ar*************************5-g4x79               0/1     ContainerCreating   0          6m24s
+ar**************************cn                   0/1     ContainerCreating   0          6m24s
 ```
 
 Get initial admin password.
@@ -167,14 +196,106 @@ rFffqHiGZpCbPSyQ
 
 Forward argocd-server service port 80 to lo*****st:8080 using kubectl.
 
-```sh
+```sh {"background":"true"}
 kubectl -n argocd port-forward service/argocd-server 8080:80
+
+Forwarding from 12*****.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+Handling connection for 8080
+error: lost connection to pod
+ *  Program exited with code 1.
 ```
 
 Browse ht*****************80 and login with initial admin password.
 
 ```sh
 open ht******************80
+
+# Ran on 2024-05-06 13:50:54+01:00 for 667ms exited with 0
 ```
 
 # Demo With Sample Application
@@ -210,27 +331,9 @@ Push changes to your repository.
 git add .
 git commit -m "Create sample-project"
 git push
-
-# Ran on 2024-05-06 13:49:14+01:00 for 2.645s exited with 0
-[T-agrocd ee***67] Create sample-project
- 2 files changed, 267 insertions(+), 6 deletions(-)
- create mode 100644 Cloud-native/Agrocd /RE***E-01*************************md
-Enumerating objects: 10, done.
-Counting objects: 100% (10/10), done.
-Delta compression using up to 8 threads
-Compressing objects: 100% (6/6), done.
-Writing objects: 100% (6/6), 1.25 KiB | 1.25 MiB/s, done.
-Total 6 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
-remote: 
-remote: GitHub found 47 vulnerabilities on stateful/blog-examples's default branch (5 critical, 8 high, 33 moderate, 1 low). To find out more, visit:
-remote:      ht*********************************************************ot
-remote: 
-To ht*****************************************it
-   a6************67  T-agrocd -> T-****cd
 ```
 
-Create a sample applicaiton definition yaml file called *sample-app* under argocd-apps.
+Create a sample application definition yaml file called *sample-app* under argocd-apps.
 
 ```sh
 cat << EOF >> argocd-apps/sample-app.yaml
@@ -256,20 +359,20 @@ spec:
       prune: true
 EOF
 
-# Ran on 2024-05-06 13:49:47+01:00 for 351ms exited with 0
+# Ran on 2024-05-06 14:18:02+01:00 for 665ms exited with 0
 ```
 
 Push changes to your repository.
 
 ```sh
-git add .
+git add argocd-appprojects/sample-project.yaml
 git commit -m "Create application"
 git push
 ```
 
 # Cleanup
 
-Remove application and applicaiton project.
+Remove application and application project.
 
 ```sh
 rm -f argocd-apps/sample-app.yaml
