@@ -220,7 +220,7 @@ EOF
 Push changes to your repository.
 
 ```sh
-git add argocd-apps/sample-app.yaml
+git add .
 git commit -m "Create application"
 git push
 ```

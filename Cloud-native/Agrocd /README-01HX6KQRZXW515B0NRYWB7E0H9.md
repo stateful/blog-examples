@@ -4,7 +4,7 @@ runme:
     relativePath: README.md
   session:
     id: 01HX6KQRZXW515B0NRYWB7E0H9
-    updated: 2024-05-06 13:49:14+01:00
+    updated: 2024-05-06 13:50:01+01:00
 ---
 
 # Self Managed Argo CD - App of Everything
@@ -210,6 +210,24 @@ Push changes to your repository.
 git add .
 git commit -m "Create sample-project"
 git push
+
+# Ran on 2024-05-06 13:49:14+01:00 for 2.645s exited with 0
+[T-agrocd ee***67] Create sample-project
+ 2 files changed, 267 insertions(+), 6 deletions(-)
+ create mode 100644 Cloud-native/Agrocd /RE***E-01*************************md
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 1.25 KiB | 1.25 MiB/s, done.
+Total 6 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 2 local objects.
+remote: 
+remote: GitHub found 47 vulnerabilities on stateful/blog-examples's default branch (5 critical, 8 high, 33 moderate, 1 low). To find out more, visit:
+remote:      ht*********************************************************ot
+remote: 
+To ht*****************************************it
+   a6************67  T-agrocd -> T-****cd
 ```
 
 Create a sample applicaiton definition yaml file called *sample-app* under argocd-apps.
@@ -237,12 +255,14 @@ spec:
       selfHeal: true
       prune: true
 EOF
+
+# Ran on 2024-05-06 13:49:47+01:00 for 351ms exited with 0
 ```
 
 Push changes to your repository.
 
 ```sh
-git add argocd-apps/sample-app.yaml
+git add .
 git commit -m "Create application"
 git push
 ```
