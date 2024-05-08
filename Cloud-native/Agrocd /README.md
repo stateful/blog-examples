@@ -11,7 +11,7 @@ brew install kind
 Create local Kubernetes Cluster using kind
 
 ```sh
-kind create cluster — name my-cluster
+kind create cluster --name my-cluster
 ```
 
 Check cluster is running and healthy
@@ -29,16 +29,16 @@ argocd/
 ├── app-projects/          # Stores Argo CD Application Projects YAML files
 ├── applications/          # Stores Argo CD Application YAML files
 ├── installation/          # Stores Argo CD installation files
-│   ├── helm-chart/        # Contains Helm chart for Argo CD
-│   └── values.yaml        # Custom values for Argo CD installation
+│   ├── argo-cd/        # Contains Helm chart for Argo CD
+│   └── values-override.yaml        # Custom values for Argo CD installation
 ```
 
 # Create App Configuration and Project Settings
 
-edit *argocd-install/values-override.yaml* to update your configuration.
+edit *installation/values-override.yaml* to update your configuration.
 
 ```sh
-cat << EOF > argocd-install/values-override.yaml
+cat << EOF > installation/values-override.yaml
 server:
   configEnabled: true
   config:
@@ -61,20 +61,20 @@ server:
           valueFiles:
           - values.yaml
           - ../values-override.yaml
-        path: argocd-install/argo-cd
+        path: installation/argo-cd
         repoURL: https://github.com/stateful/blog-examples.git
         targetRevision: HEAD
       syncPolicy:
         syncOptions:
         - CreateNamespace=true
-    - name: argocd-apps
+    - name: applications
       namespace: argocd
       destination:
         namespace: argocd
         server: https://kubernetes.default.svc
       project: argocd
       source:
-        path: argocd-apps
+        path: applications
         repoURL: https://github.com/stateful/blog-examples.git
         targetRevision: HEAD
         directory:
@@ -84,14 +84,14 @@ server:
         automated:
           selfHeal: true
           prune: true
-    - name: argocd-appprojects
+    - name: app-projects
       namespace: argocd
       destination:
         namespace: argocd
         server: https://kubernetes.default.svc
       project: argocd
       source:
-        path: argocd-appprojects
+        path: app-projects
         repoURL: https://github.com/stateful/blog-examples.git
         targetRevision: HEAD
         directory:
@@ -125,7 +125,7 @@ EOF
 Install Argo CD to *argocd* namespace using argo-cd helm chart overriding default values with *values-override.yaml* file. If argocd namespace does not exist, use *--create-namespace* parameter to create it.
 
 ```sh {"cwd":"/Users/macbookpro/Desktop/blog-examples/Cloud-native/Agrocd/argocd-install/"}
-cd argocd-install/
+cd installation/
 helm install argocd ./argo-cd \
     --namespace=argocd \
     --create-namespace \
@@ -162,7 +162,7 @@ open https://localhost:8080
 Create an application project definition file called *sample-project*.
 
 ```sh
-cat << EOF > argocd-appprojects/sample-project.yaml
+cat << EOF > app-projects/sample-project.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
@@ -182,18 +182,10 @@ spec:
 EOF
 ```
 
-Push changes to your repository.
+Create a sample application definition yaml file called *sample-app* under application.
 
 ```sh
-git add .
-git commit -m "Create sample-project"
-git push
-```
-
-Create a sample application definition yaml file called *sample-app* under argocd-apps.
-
-```sh
-cat << EOF >> argocd-apps/sample-app.yaml
+cat << EOF >> application/sample-app.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -217,12 +209,32 @@ spec:
 EOF
 ```
 
-Push changes to your repository.
-
-```sh
-git add argocd-appprojects/sample-project.yaml
-git commit -m "Create application"
-git push
-```
+Push changes to your repository
 
 # Cleanup
+
+Remove application and application project definition files in the git repository `sample-app.yaml` and `sample-project.yaml`
+
+Uninstall argo-cd helm deployment.
+
+```sh
+helm uninstall argocd
+```
+
+Wait until all resources are deleted in argocd namespace.
+
+```sh
+kubectl -n argocd get pods
+```
+
+Delete argocd namespaces.
+
+```sh
+kubectl delete ns argocd
+```
+
+Delete kind cluster.
+
+```sh
+kind delete cluster --name my-cluster
+```

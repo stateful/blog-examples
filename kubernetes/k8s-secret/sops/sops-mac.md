@@ -9,33 +9,33 @@
 - [AWS CLI](https://docs.aws.amazon.com/cli/v1/userguide/cli-chap-install.html) installed.
 - Verify and Configure the AWS CLI  ( An AWS account with privileges to create an [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html) and a [KMS Key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).)
 
-```sh {"name":"Prerequiste"}
+```sh {"background":"true","name":"Prerequiste"}
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-```sh
+```sh {"background":"true","name":"brew install kind"}
 brew install kind
 ```
 
-```sh
+```sh {"background":"true","name":" kubectl"}
 brew install kubectl
 ```
 
-```sh {"name":"awscli"}
+```sh {"background":"true","name":"awscli"}
 brew install awscli
 ```
 
-```sh {"name":"aws-version"}
+```sh {"background":"true","name":"aws-version"}
 aws --version
 ```
 
-```sh {"name":"aws-configure"}
+```sh {"background":"true","name":"aws-configure"}
 aws configure 
 ```
 
 ### Installation of SOPS
 
-```sh {"name":"install-sops"}
+```sh {"background":"true","name":"install-sops"}
 brew install sops
 ```
 
@@ -44,8 +44,8 @@ brew install sops
 - Create a KMS key with a specific name, you can use the `--description` and the name of the key `runme-key`.
 - Create an alias
 
-```sh {"name":"aws-kms-key"}
-export alias
+```sh {"background":"false","name":"aws-kms-key","promptEnv":"yes"}
+export alias 
 
 aws kms create-key --description "key-runme" | jq -r '.KeyMetadata.KeyId'
 keyid=$(aws kms create-key --description "key-runme" | jq -r '.KeyMetadata.KeyId')
