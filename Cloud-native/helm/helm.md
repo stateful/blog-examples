@@ -126,6 +126,8 @@ helm plugin install https://github.com/databus23/helm-diff
 kubectl apply -f sops-secrets.yaml
 ```
 
+### Remove Helm
+
 ```sh
 helm repo remove ingress-nginx
 ```
