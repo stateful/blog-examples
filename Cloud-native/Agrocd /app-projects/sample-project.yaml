@@ -6,7 +6,7 @@ metadata:
 spec:
   clusterResourceWhitelist:
   - group: '*'
-    kind: '*'
+    kind: '*
   destinations:
   - namespace: sample-app
     server: https://kubernetes.default.svc
